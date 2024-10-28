@@ -1,12 +1,12 @@
+_G.love = require("love")
+
 function love.load()
-    player ={}
+    _G.player ={}
     player.sprite = love.graphics.newImage("images/reimu.png")
     player.x = 400
     player.y = 200
     player.height = player.sprite:getHeight()
     player.width = player.sprite:getWidth()
-    -- player.centerY = player.height / 2
-    -- player.centerX = player.width / 2
     player.angle1 = 0
 end
 
