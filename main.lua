@@ -1,6 +1,6 @@
 local love = require("love")
 local Player = require("objects.Player")--This is like importing objects from other files.
-
+local bullet = require("objects.Bullet")
 
 function love.load()
     _G.player = Player()
@@ -8,7 +8,7 @@ function love.load()
 end
 
 function love.update(dt)
-    FIRECOOLDOWN = FIRECOOLDOWN + ( 2 * dt)
+    FIRECOOLDOWN = FIRECOOLDOWN + ( 15 * dt)
     if(FIRECOOLDOWN > 1) then
         player:fire()
         FIRECOOLDOWN = FIRECOOLDOWN - 1
