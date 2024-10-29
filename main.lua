@@ -4,16 +4,15 @@ local Player = require("objects.Player")
 
 function love.load()
     _G.player = Player()
-    _G.fireCooldown = 0
-    
+    FIRECOOLDOWN = 0
 end
 
 function love.update(dt)
-    -- fireCooldown = fireCooldown + ( 2 * dt)
-    -- if(fireCooldown > 1) then
-    --     drawfire(player.x + 50, player.y)
-    --     fireCooldown = fireCooldown - 1
-    -- end
+    FIRECOOLDOWN = FIRECOOLDOWN + ( 2 * dt)
+    if(FIRECOOLDOWN > 1) then
+        player:fire()
+        FIRECOOLDOWN = FIRECOOLDOWN - 1
+    end
     player:movePlayer(dt)
 end
 
