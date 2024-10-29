@@ -1,5 +1,5 @@
 local love = require("love")
-local Player = require("objects.Player")
+local Player = require("objects.Player")--This is like importing objects from other files.
 
 
 function love.load()
