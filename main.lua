@@ -14,7 +14,7 @@ end
 function love.update(dt)
     fireCooldown = fireCooldown + ( 2 * dt)
     if(fireCooldown > 1) then
-        print("FIRE")
+        drawfire(player.x + 50, player.y)
         fireCooldown = fireCooldown - 1
     end
     if love.keyboard.isDown("d") then
@@ -35,6 +35,10 @@ function love.update(dt)
     if love.keyboard.isDown("right") then
        player.angle1 = player.angle1 + math.pi * dt
     end
+end
+
+function drawfire(x,y)
+    love.graphics.circle("fill", x, y, 10)
 end
 
 function love.draw()
