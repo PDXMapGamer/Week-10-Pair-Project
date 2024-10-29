@@ -26,6 +26,11 @@ function Player()
                 self.angle
             ))
         end,
+
+        -- todo Destroy bullet function does not work, crashes game when bullet touches the edge of the screen
+        -- destroyBullet = function (self, index) 
+        --     table.remove(self.bullet, index)
+        -- end,
         movePlayer = function(player, dt)
             if love.keyboard.isDown("d") then
                 player.x = player.x + 1
@@ -44,6 +49,13 @@ function Player()
             end
             if love.keyboard.isDown("right") then
                 player.angle  = player.angle + math.pi * dt
+            end
+            for index, bullet in ipairs(player.bullets) do
+                bullet:move()
+
+                -- if(bullet.x < 0 or bullet.x > 1030 or bullet.y < 0 or bullet.y > 770) then
+                --     player:destroyBullet(player, index)--Destroys bullets when they go off screen
+                -- end
             end
         end
     }
