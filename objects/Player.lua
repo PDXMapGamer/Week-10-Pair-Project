@@ -1,18 +1,31 @@
 local love = require("love")
+local bullet = require("objects.Bullet")
 
 function Player()
+        
     return{
         sprite = love.graphics.newImage("images/reimu.png"),
         x = 400,
         y = 200,
         angle = 0,
+        bullets = {},
         height = love.graphics.newImage("images/reimu.png"):getWidth(),
         width = love.graphics.newImage("images/reimu.png"):getHeight(),
         draw = function (player)
-            love.graphics.draw(player.sprite, player.x, player.y, player.angle, 0.4, 0.4, player.width/2, player.height/2)
-        end,
+            love.graphics.draw(player.sprite, player.x, player.y, player.angle, 0.5, 0.5, player.width/2, player.height/2)
 
-        movePlayer = function (player, dt)
+            for _, bullet in pairs(player.bullets) do
+                bullet:draw()
+            end
+        end,
+        fire = function (self)
+            table.insert(self.bullets, Bullet(
+                self.x,
+                self.y,
+                self.angle
+            ))
+        end,
+        movePlayer = function(player, dt)
             if love.keyboard.isDown("d") then
                 player.x = player.x + 1
             end
