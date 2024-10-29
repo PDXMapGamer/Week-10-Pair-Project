@@ -8,13 +8,14 @@ function Player()
         x = 400,
         y = 200,
         angle = 0,
-        bullets = {},
+        bullets = {},--todo This is a table. When we learn about tables write an explanation of what they are
         height = love.graphics.newImage("images/reimu.png"):getWidth(),
         width = love.graphics.newImage("images/reimu.png"):getHeight(),
         draw = function (player)
             love.graphics.draw(player.sprite, player.x, player.y, player.angle, 0.5, 0.5, player.width/2, player.height/2)
 
             for _, bullet in pairs(player.bullets) do
+                -- The _ is like i in JavaScript for loops (eg for(i=0; ...)), while we can use i here, this variable is not used so it is standard practice is use _ to show this variable is not used
                 bullet:draw()
             end
         end,
