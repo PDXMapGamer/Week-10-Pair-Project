@@ -1,3 +1,5 @@
+local love = require("love")
+
 function love.conf(t)
 t.window.title = "Hakurei's Space Adventure"    
 t.window.width = 1024
