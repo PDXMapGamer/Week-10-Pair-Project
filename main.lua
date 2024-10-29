@@ -14,24 +14,7 @@ function love.update(dt)
     --     drawfire(player.x + 50, player.y)
     --     fireCooldown = fireCooldown - 1
     -- end
-    -- if love.keyboard.isDown("d") then
-    -- player.x = player.x + 1
-    -- end
-    -- if love.keyboard.isDown("a") then
-    --     player.x = player.x - 1
-    -- end
-    -- if love.keyboard.isDown("s") then
-    --     player.y = player.y + 1
-    -- end
-    -- if love.keyboard.isDown("w") then
-    --     player.y = player.y - 1
-    -- end
-    -- if love.keyboard.isDown("left") then 
-    --     player.angle1 = player.angle1 - math.pi * dt
-    -- end
-    -- if love.keyboard.isDown("right") then
-    --    player.angle1 = player.angle1 + math.pi * dt
-    -- end
+    player:movePlayer(dt)
 end
 
 -- function drawfire(x,y)
