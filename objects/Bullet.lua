@@ -1,7 +1,7 @@
 local love = require("love")
 
 function  Bullet(x, y, angle)
-    BULLET_SPEED = 1
+    BULLET_SPEED = 2
     return{
         x = x,
         y = y,
