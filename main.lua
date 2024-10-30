@@ -20,28 +20,28 @@ function love.update(dt)
         local randomNum = math.floor(math.random(4))
         local x
         local y
-        local radius = math.random(25)
+        local radius = math.random(5, 15)
         --It appears there is no easy way of doing a switch statement in Lua.
         if(randomNum == 1) then
             print("top")
             x = math.random() * 1024
             y = 10
-            table.insert(ENEMIES, 1, Enemy(x, y, radius))
+            table.insert(ENEMIES, 1, Enemy(x, y, radius, math.pi*0.5))
         elseif (randomNum == 2) then
             print("bottom")
             x = math.random() * 1024
             y = 759
-            table.insert(ENEMIES, 1, Enemy(x, y, radius))
+            table.insert(ENEMIES, 1, Enemy(x, y, radius, math.pi*1.5))
         elseif (randomNum == 3) then
             print("left")
             x = 10
             y = math.random() * 786
-            table.insert(ENEMIES, 1, Enemy(x, y, radius))
+            table.insert(ENEMIES, 1, Enemy(x, y, radius, 0))
         elseif (randomNum == 4) then
             print("right")
             x = 1000
             y = math.random() * 786
-            table.insert(ENEMIES, 1, Enemy(x, y, radius))
+            table.insert(ENEMIES, 1, Enemy(x, y, radius, -math.pi))
         end
         -- local randomX = math.random() * 1024
         -- local randomY = math.random() * 786
@@ -51,6 +51,9 @@ function love.update(dt)
         ENEMYCOOLDOWN = ENEMYCOOLDOWN - 1 
     end
     player:movePlayer(dt)
+    for index, enemy in pairs(ENEMIES) do
+        enemy:move(dt)
+    end
 end
 
 
