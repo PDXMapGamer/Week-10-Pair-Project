@@ -1,9 +1,11 @@
 local love = require("love")
 local Player = require("objects.Player")--This is like importing objects from other files.
 local bullet = require("objects.Bullet")
+local Enemy = require ("objects.Enemy")
 
 function love.load()
     _G.player = Player()
+    enemies = {}
     FIRECOOLDOWN = 0
 end
 
@@ -22,5 +24,6 @@ end
 
 function love.draw()
     player:draw()
+    Enemy:draw(50, 50, 25)
     -- love.graphics.print(fireCooldown)
 end
