@@ -50,6 +50,19 @@ function Player()
             if love.keyboard.isDown("right") then
                 player.angle  = player.angle + math.pi * dt
             end
+            --Keeps players in bounds
+            if player.x < player.width / 4 then
+                player.x = player.width / 4
+            end
+            if player.x > 1024 - player.width / 4 then
+                player.x = 1024 - player.width / 4
+            end
+            if player.y < player.height / 4 then
+                player.y = player.height / 4
+            end
+            if player.y > 768 - player.height / 4 then
+                player.y = 768 - player.height / 4
+            end
             for index, bullet in ipairs(player.bullets) do
                 bullet:move()
 
