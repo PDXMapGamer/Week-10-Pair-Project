@@ -29,10 +29,19 @@ function love.update(dt)
             table.insert(ENEMIES, 1, Enemy(x, y, radius))
         elseif (randomNum == 2) then
             print("bottom")
+            x = math.random() * 1024
+            y = 759
+            table.insert(ENEMIES, 1, Enemy(x, y, radius))
         elseif (randomNum == 3) then
             print("left")
+            x = 10
+            y = math.random() * 786
+            table.insert(ENEMIES, 1, Enemy(x, y, radius))
         elseif (randomNum == 4) then
             print("right")
+            x = 1000
+            y = math.random() * 786
+            table.insert(ENEMIES, 1, Enemy(x, y, radius))
         end
         -- local randomX = math.random() * 1024
         -- local randomY = math.random() * 786
