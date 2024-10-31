@@ -1,6 +1,8 @@
 local love = require("love")
 local Player = require("objects.Player")--This is like importing objects from other files.
 local Enemy = require ("objects.Enemy")
+require("globals")
+math.randomseed(os.time())
 
 function love.load()
     _G.player = Player()
@@ -46,7 +48,7 @@ function love.update(dt)
             else
                 angle = math.random(16, 20) * 0.1 * math.pi
             end
-            table.insert(ENEMIES, 1, Enemy(x, y, radius, 0))
+            table.insert(ENEMIES, 1, Enemy(x, y, radius, angle))
         elseif (randomNum == 4) then
             -- print("right")
             x = 1000
