@@ -4,6 +4,7 @@ function Enemy(x, y, size, angle)
   local randomX = math.random(50, 150)
   local randomY = math.random(50, 150)
     return{
+        hp = size * 0.5,
         x = x,
         y = y,
         x_vel = randomX * math.cos(angle),
@@ -16,7 +17,11 @@ function Enemy(x, y, size, angle)
         end,
 
         onHit = function (self, enemyTable, index)
-            table.remove(enemyTable, index)
+            self.hp = self.hp - 1
+            print(self.hp)
+            if(self.hp <= 0) then
+                table.remove(enemyTable, index)
+            end
         end,
 
         move = function (self, dt)

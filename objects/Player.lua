@@ -14,7 +14,7 @@ function Player()
         width = love.graphics.newImage("images/reimu.png"):getHeight(),
         draw = function (player)
             love.graphics.draw(player.sprite, player.x, player.y, player.angle, 0.5, 0.5, player.width/2, player.height/2)
-
+            -- love.graphics.circle("line", player.x, player.y, player.width * 0.20) This shows a white circle that represents the player's hitbox
             for _, bullet in pairs(player.bullets) do
                 -- The _ is like i in JavaScript for loops (eg for(i=0; ...)), while we can use i here, this variable is not used so it is standard practice is use _ to show this variable is not used
                 bullet:draw()
