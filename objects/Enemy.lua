@@ -1,14 +1,13 @@
 local love = require "love"
 
 function Enemy(x, y, size, angle)
-  local randomX = math.random(50, 150)
-  local randomY = math.random(50, 150)
+  local randomSpeed = math.random(50, 150)
     return{
         hp = size * 0.5,
         x = x,
         y = y,
-        x_vel = randomX * math.cos(angle),
-        y_vel = randomY * math.sin(angle),
+        x_vel = randomSpeed * math.cos(angle),
+        y_vel = randomSpeed * math.sin(angle),
         radius = size,
 
         draw = function (self)
