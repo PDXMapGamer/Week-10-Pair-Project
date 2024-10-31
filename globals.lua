@@ -8,6 +8,7 @@ SCORE = 0
 
 function drawScore(score)
     return{
+        love.graphics.setColor(1, 0, 0, 0.8),
         love.graphics.print("Kill count: " .. score, 450, 0, 0, 2, 2)
     }
 end
