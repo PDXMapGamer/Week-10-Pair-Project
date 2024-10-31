@@ -87,4 +87,5 @@ function love.draw()
     for _, enemy in pairs(ENEMIES) do
         enemy:draw()
     end
+    drawScore(SCORE)
 end

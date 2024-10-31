@@ -21,6 +21,7 @@ function Enemy(x, y, size, angle)
             print(self.hp)
             if(self.hp <= 0) then
                 table.remove(enemyTable, index)
+                SCORE = SCORE + 1
             end
         end,
 
