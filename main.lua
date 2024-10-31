@@ -30,13 +30,13 @@ function love.update(dt)
             x = math.random() * 1024
             y = 10
             angle = math.random(1, 9) * 0.1 * math.pi--generates a random number between 0 and 0.9pi without risking the value being too close to 1 (this would make the enemy basically go upwards instead of somewhat towards the other screen). All other starting points follow this same logic
-            table.insert(ENEMIES, 1, Enemy(x, y, radius, angle))
+            table.insert(ENEMIES, Enemy(x, y, radius, angle))
         elseif (randomNum == 2) then
             -- print("bottom")
             x = math.random() * 1024
             y = 759
             angle = math.random(11, 19) * 0.1 * math.pi
-            table.insert(ENEMIES, 1, Enemy(x, y, radius, angle))
+            table.insert(ENEMIES, Enemy(x, y, radius, angle))
         elseif (randomNum == 3) then
             -- print("left")
             x = 10
@@ -48,27 +48,42 @@ function love.update(dt)
             else
                 angle = math.random(16, 20) * 0.1 * math.pi
             end
-            table.insert(ENEMIES, 1, Enemy(x, y, radius, angle))
+            table.insert(ENEMIES, Enemy(x, y, radius, angle))
         elseif (randomNum == 4) then
             -- print("right")
             x = 1000
             y = math.random() * 786
             angle = math.random(1, 9) * -0.1 * math.pi
-            table.insert(ENEMIES, 1, Enemy(x, y, radius, angle))
+            table.insert(ENEMIES, Enemy(x, y, radius, angle))
         end
         ENEMYCOOLDOWN = ENEMYCOOLDOWN - 1 
     end
     player:movePlayer(dt)
-    for index, enemy in pairs(ENEMIES) do
+    --Update all enemy loop
+    for enemyIndex, enemy in pairs(ENEMIES) do
+        if(player.isAlive) then
+            if(calculateDistance(player.x, player.y, enemy.x, enemy.y) < 10)then
+                player.isAlive = false
+            end
+        end
         enemy:move(dt)
+        for bulletIndex, bullet in pairs(player.bullets) do
+            if(calculateDistance(bullet.x, bullet.y, enemy.x, enemy.y) < enemy.radius)then
+                print("bullet hit")
+                player:destroyBullet(bulletIndex)
+                enemy:onHit(ENEMIES, enemyIndex)
+            end
+        end
     end
 end
 
 
 
 function love.draw()
-    love.graphics.setColor(1,1,1,1)
-    player:draw()
+    if(player.isAlive) then
+        love.graphics.setColor(1,1,1,1)
+        player:draw()
+    end
     for _, enemy in pairs(ENEMIES) do
         enemy:draw()
     end
