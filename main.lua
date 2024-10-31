@@ -62,7 +62,7 @@ function love.update(dt)
     --Update all enemy loop
     for enemyIndex, enemy in pairs(ENEMIES) do
         if(player.isAlive) then
-            if(calculateDistance(player.x, player.y, enemy.x, enemy.y) < 10)then
+            if(calculateDistance(player.x, player.y, enemy.x, enemy.y) < player.width * 0.20)then
                 player.isAlive = false
             end
         end

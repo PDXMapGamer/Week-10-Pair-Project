@@ -1,7 +1,7 @@
 local love = require("love")
 
 function love.conf(t)
-t.window.title = "Hakurei's Space Adventure"    
+t.window.title = "Hakurei's Adventure Through An Ambiguously Themed Game"    
 t.window.width = 1024
 t.window.height = 768
 --! console can be useful for debugging
