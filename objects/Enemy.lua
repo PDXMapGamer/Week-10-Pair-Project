@@ -15,6 +15,10 @@ function Enemy(x, y, size, angle)
             love.graphics.circle("fill", self.x, self.y, self.radius)
         end,
 
+        onHit = function (self, enemyTable, index)
+            table.remove(enemyTable, index)
+        end,
+
         move = function (self, dt)
             self.x = self.x + self.x_vel * dt
             self.y = self.y + self.y_vel * dt
