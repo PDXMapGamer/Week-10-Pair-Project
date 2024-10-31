@@ -18,7 +18,6 @@ function Enemy(x, y, size, angle)
 
         onHit = function (self, enemyTable, index)
             self.hp = self.hp - 1
-            print(self.hp)
             if(self.hp <= 0) then
                 table.remove(enemyTable, index)
                 SCORE = SCORE + 1

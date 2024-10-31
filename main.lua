@@ -9,11 +9,13 @@ function love.load()
     _G.ENEMIES = {}
     FIRECOOLDOWN = 0
     ENEMYCOOLDOWN = 0
+    BASESPAWNRATE = 0.75
+    INCREMENT = 0.025
 end
 
 function love.update(dt)
-    FIRECOOLDOWN = FIRECOOLDOWN + ( 15 * dt)
-    ENEMYCOOLDOWN = ENEMYCOOLDOWN + dt
+    FIRECOOLDOWN = FIRECOOLDOWN + ( 20 * dt)
+    ENEMYCOOLDOWN = ENEMYCOOLDOWN + (BASESPAWNRATE + (INCREMENT * SCORE)) * dt
     if(FIRECOOLDOWN > 1) then
         player:fire()
         FIRECOOLDOWN = FIRECOOLDOWN - 1
@@ -69,7 +71,6 @@ function love.update(dt)
         enemy:move(dt)
         for bulletIndex, bullet in pairs(player.bullets) do
             if(calculateDistance(bullet.x, bullet.y, enemy.x, enemy.y) < enemy.radius)then
-                print("bullet hit")
                 player:destroyBullet(bulletIndex)
                 enemy:onHit(ENEMIES, enemyIndex)
             end
