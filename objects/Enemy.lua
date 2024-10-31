@@ -27,7 +27,7 @@ function Enemy(x, y, size, angle)
                 self.x_vel = -self.x_vel
                 self.y_vel = -self.y_vel
             end
-          
+            
         end
     }
 
